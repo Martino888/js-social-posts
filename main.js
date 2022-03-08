@@ -87,7 +87,6 @@ const card = document.getElementById('container');
 aggiornaPost();
 
 function aggiornaPost(){
-    let contenuto = '';
 for (let i = 0; i < posts.length; i++) {
     card.innerHTML += `<div class="post">
         <div class="post__header">
@@ -121,3 +120,32 @@ for (let i = 0; i < posts.length; i++) {
 }
 }
 
+// creo bottoni
+// in base al bottone cliccato, fai questo:
+// aggiungo classe se clicco 1 volta, levo se clicco 2 volte 
+// se clicco 1 volta, il numero dei likes aumenta => creo una nuova variabile con i likes che andranno ad aumentare o diminuire in base ai click 
+// se clicco 2 volte, i likes tornano come prima 
+// aggiorno i likes all'html
+
+
+
+let btnLike = document.querySelectorAll('.like-button');
+let btnColor = document.querySelectorAll ('.js-likes-counter');
+
+
+btnLike[i].addEventListener('click', function(){
+    
+    this.classList.toggle('like-button--liked');
+
+    if(btnLike[i].classList.contains('like-button--liked')){
+        posts[i].likes++;
+    }else{
+        posts[i].likes--;
+    }
+    console.log(posts[i].likes);
+    likeColor[i].innerHTML = posts[i].likes;
+});
+
+btnLike[i].addEventListener('click', function(event){
+    event.preventDefault();
+});
